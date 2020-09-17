@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hőmérséklet</title>
+</head>
+<body>
+    <table id="tbl">
+        <style>
+            tr,td{
+                border: solid 2px red;
+            }
+        </style>
+        
+    </table>
+    <script>
+        var homersekletek=[20,18,21,22,23,24,20,22,25,26,22,21,23,19,25,23,23,23,22,22,25,26,27,26,25,23,28,27];
+        homersekletek.forEach((e,i)=>console.log(i+1+" "+e));
+        //b.
+        const osszeg=homersekletek.reduce((s,e)=>s+e,0);
+        console.log(osszeg);
+        const atlag=osszeg/homersekletek.length;
+        console.log(Math.round(atlag*10)/10);
+        //c.
+        const v=homersekletek.some((e)=>e>100);
+        console.log(v ? "igen" : "nem");
+
+        //d.
+        const hanyszor=homersekletek.reduce((db,e)=>e>26 ? db+1 : db,0);
+        console.log(hanyszor);
+
+        //e.
+        console.log(Math.min(...homersekletek));
+        //console.log(homersekletek.reduce((min,e,i,arr)=>min<e ? min : e,arr[0]));
+
+        //f.
+        const leghidegebb=Math.min(...homersekletek)
+        console.log(homersekletek.findIndex((e)=>e==leghidegebb)+1);
+        console.log(homersekletek);
+        
+        //g.
+        const tablaTomb=homersekletek.map((e,i)=>"<tr><td>"+(i+1)+"</td><td>"+e+"</td></tr>")
+
+        document.getElementById("tbl").innerHTML=tablaTomb.join("");
+
+    </script>
+
+</body>
+</html>
